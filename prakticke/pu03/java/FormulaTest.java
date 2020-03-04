@@ -98,10 +98,10 @@ public class FormulaTest {
     static <T> List<T> L(T... ts) { return Arrays.asList(ts); }
     @SafeVarargs
     static <T> Set<T> S(T... ts) { return new HashSet<T>(Arrays.asList(ts)); }
-    static <K,V> Map<K,V> M() { return Map.of(); }
-    static <K,V> Map<K,V> M(K k1, V v1) {return Map.of(k1, v1); }
-    static <K,V> Map<K,V> M(K k1, V v1, K k2, V v2) { return Map.of(k1, v1, k2, v2); }
-    static <K,V> Map<K,V> M(K k1, V v1, K k2, V v2, K k3, V v3) { return Map.of(k1, v1, k2, v2, k3, v3); }
+    static <K,V> Map<K,V> M() { return new HashMap<K,V>(); }
+    static <K,V> Map<K,V> M(K k1, V v1) { Map<K,V> m = M(); m.put(k1, v1); return m; }
+    static <K,V> Map<K,V> M(K k1, V v1, K k2, V v2) { Map<K,V> m = M(k1, v1); m.put(k2, v2); return m; }
+    static <K,V> Map<K,V> M(K k1, V v1, K k2, V v2, K k3, V v3) { Map<K,V> m = M(k1, v1, k2, v2); m.put(k3,v3); return m; }
 
 
     static class IsTrueCase {
